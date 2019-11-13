@@ -1,0 +1,17 @@
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+    <listener>
+        <listener-class>
+            com.edu.ua.kh.hetman.listener.ContextListener
+        </listener-class>
+    </listener>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <resource-ref>
+        <description>MySQL Database</description>
+        <res-ref-name>jdbc/departmentDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>

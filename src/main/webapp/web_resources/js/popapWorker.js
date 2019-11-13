@@ -1,0 +1,20 @@
+function createWorker() {
+     hideResultsIfshown();
+     let $recallPopUP = $(".modal-create");
+     $recallPopUP.addClass("show-modal");
+     savedPosition = $(window).scrollTop();
+     fixBodyPosition();
+ }
+ function editWorker(id, salary, name, email, date) {
+     $("#hiddenworkerId").val(`${id}`);
+     $("#hiddenWorkerOldEmail").val(`${email}`);
+     $("#editName").val(`${name}`);
+     $("#editSalary").val(`${salary}`);
+     $("#editDate").val(`${date}`);
+     $("#editEmail").val(`${email}`);
+     hideResultsIfshown();
+     let $recallPopUP = $(".modal-edit");
+     $recallPopUP.addClass("show-modal");
+     savedPosition = $(window).scrollTop();
+     fixBodyPosition();
+ }

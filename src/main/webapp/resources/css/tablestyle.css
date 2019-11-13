@@ -1,0 +1,19 @@
+body{
+    background-color:grey;
+}
+
+.table {
+    margin: auto;
+    border: 1px solid black;
+}
+
+.container-fluid{
+    width:90%;
+    font-family: 'Asap', sans-serif;
+}
+
+h1{
+    margin-top: 2%;
+    border-color: white;
+    font-family: 'Asap', sans-serif;
+}

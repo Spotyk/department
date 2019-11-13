@@ -1,0 +1,111 @@
+.modal-edit {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 99999;
+}
+.modal-create {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 99999;
+}
+
+.not-correct-input {
+    color: red;
+}
+
+.correct-input {
+    color: green;
+}
+
+.fixed-body-position {
+    width:100%;
+    position: absolute;
+    overflow: hidden;
+ }
+
+.recall-input {
+    background-color: aquamarine;
+    border: 2px;
+}
+
+.modal-edit-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem
+}
+
+.submit-button {
+    user-select: none;
+    float: left;
+    width: 80px;
+    height: 30px;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: yellowgreen;
+}
+
+.submit-button:hover {
+    background-color: green;
+}
+
+.submit-button:active {
+    background-color: rgb(9, 80, 9);
+}
+
+.close-button {
+    margin: 5px;
+    user-select: none;
+    float: right;
+    width: 34px;
+    height: 34px;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: lightgray;
+}
+
+@media only screen and (max-width: 500px) {
+    .modal-edit-content {
+        width: 80%;
+    }
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.close-button:active {
+    background-color: rgb(99, 97, 97);
+}
+
+.show-modal {
+    opacity: 9999;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 99999;
+}
