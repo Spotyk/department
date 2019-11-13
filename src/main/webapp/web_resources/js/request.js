@@ -20,36 +20,27 @@ var NAME_LABEL_SELECTOR = ".nameLabel";
 var CORRECT_INPUT_SELECTOR = ".correct-input";
 var NOT_CORRECT_INPUT_SELECTOR = ".not-correct-input";
 
-function sendCreateRequest(){
-     hideResultsIfshown();
-     var name = $(INPUT_NEW_NAME).val();
-//     if (!isValid(name)) {
-//             return;
-//         }
-     //closeCreateDepartment();
-     $.ajax({
-             url: '/createDepartment',
-             type: 'post',
-             data: {name: name}
-         }).statusCode({
+function sendCreateRequest() {
+    var name = $(INPUT_NEW_NAME).val();
 
-             200: function() {
-              window.location.replace(`http://${host}:${port}/departments`);
-             closeCreateDepartment();
-             },
-             404: function(response) {
-                    var notValidString = response.responseText;
-                     var array = notValidString.split(/(\s+)/);
-                     array.forEach(function(element) {
-                     $(element).show();
-                           });
-                     }
+    $.ajax({
+        url: '/createDepartment',
+        type: 'post',
+        data: { name: name }
+    }).statusCode({
 
-         });
- }
+        200: function() {
+            window.location.replace(`http://${host}:${port}/departments`);
+            closeCreateDepartment();
+        },
+        404: function(response) {
+            printArrayFromString(response.responseText);
+        }
 
-function sendCreateWorkerRequest(){
-    hideResultsIfshown();
+    });
+}
+
+function sendCreateWorkerRequest() {
     var name = $(INPUT_CREATE_NAME).val();
     var salary = $(INPUT_CREATE_SALARY).val();
     var email = $(INPUT_CREATE_EMAIL).val();
@@ -57,25 +48,21 @@ function sendCreateWorkerRequest(){
     var depId = $(INPUT_DEP_ID_WORKER).val();
 
     $.ajax({
-            url: '/createWorker',
-            type: 'post',
-            data: {name: name, salary:salary, email:email, date:date, depId:depId}
-        }).statusCode({
-        200: function() { window.location.replace(`http://${host}:${port}/workers?depId=${depId}`);
-             closeCreateDepartment();
+        url: '/createWorker',
+        type: 'post',
+        data: { name: name, salary: salary, email: email, date: date, depId: depId }
+    }).statusCode({
+        200: function() {
+            window.location.replace(`http://${host}:${port}/workers?depId=${depId}`);
+            closeCreateDepartment();
         },
         404: function(response) {
-                     var notValidString = response.responseText;
-                     var array = notValidString.split(/(\s+)/);
-                     array.forEach(function(element) {
-                     $(element).show();
-                           });
-                     }
-        });
+            printArrayFromString(response.responseText);
+        }
+    });
 }
 
-function sendUpdateWorkerRequest(){
-    hideResultsIfshown();
+function sendUpdateWorkerRequest() {
     var workerId = $(INPUT_ID_WORKER).val();
     var hiddenWorkerOldEmail = $(INPUT_OLD_EMAIL).val();
     var name = $(INPUT_EDIT_NAME).val();
@@ -85,69 +72,54 @@ function sendUpdateWorkerRequest(){
     var depId = $(INPUT_DEP_ID_WORKER).val();
 
     $.ajax({
-            url: '/updateWorker',
-            type: 'post',
-            data: {name: name, salary:salary, email:email,
-             date:date, depId:depId,workerId:workerId,hiddenWorkerOldEmail:hiddenWorkerOldEmail}
-        }).statusCode({
-        200: function() { window.location.replace(`http://${host}:${port}/workers?depId=${depId}`);
-             closeEditDepartment();
+        url: '/updateWorker',
+        type: 'post',
+        data: {
+            name: name,
+            salary: salary,
+            email: email,
+            date: date,
+            depId: depId,
+            workerId: workerId,
+            hiddenWorkerOldEmail: hiddenWorkerOldEmail
+        }
+    }).statusCode({
+        200: function() {
+            window.location.replace(`http://${host}:${port}/workers?depId=${depId}`);
+            closeEditDepartment();
         },
         404: function(response) {
-                    var notValidString = response.responseText;
-                     var array = notValidString.split(/(\s+)/);
-                     array.forEach(function(element) {
-                     $(element).show();
-                           });
-                     }
-        });
+            printArrayFromString(response.responseText);
+        }
+    });
 }
 
 function sendRequest() {
-    hideResultsIfshown();
     var name = $(INPUT_NAME).val();
     var hiddenDepId = $(INPUT_DEP_ID).val();
 
     var host = window.location.hostname;
     var port = window.location.port;
-    if (!isValid(name)) {
-        return;
-    }
-            $.ajax({
-                url: '/updateDepartment',
-                type: 'post',
-                data: {name: name, hiddenDepId: hiddenDepId}
-            }).statusCode({
-                200: function() {
-                 window.location.replace(`http://${host}:${port}/departments`);
-                 closeEditDepartment();
-                                },
-                404: function(response) {
-                     var notValidString = response.responseText;
-                     var array = notValidString.split(/(\s+)/);
-                     array.forEach(function(element) {
-                     $(element).show();
-                           });
-                     }
-            });
+
+    $.ajax({
+        url: '/updateDepartment',
+        type: 'post',
+        data: { name: name, hiddenDepId: hiddenDepId }
+    }).statusCode({
+        200: function() {
+            window.location.replace(`http://${host}:${port}/departments`);
+            closeEditDepartment();
+        },
+        404: function(response) {
+            printArrayFromString(response.responseText);
+        }
+    });
 
 }
 
-function isValid(name) {
-    if (isNameValid(name)) {
-        $(NAME_LABEL_SELECTOR + CORRECT_INPUT_SELECTOR).show();
-    }
-    if (!isNameValid(name)) {
-        $(NAME_LABEL_SELECTOR + NOT_CORRECT_INPUT_SELECTOR).show();
-    }
-
-    return isNameValid(name);
-}
-
-function isNameValid(name) {
-    return name.length > 2 && name.length < 50;
-}
-
-function hideResultsIfshown() {
-    $(".nameLabel").hide();
+function printArrayFromString(string) {
+    var array = string.split(/(\s+)/);
+    array.forEach(function(element) {
+        $(element).show();
+    });
 }

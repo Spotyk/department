@@ -1,5 +1,4 @@
 function createWorker() {
-     hideResultsIfshown();
      let $recallPopUP = $(".modal-create");
      $recallPopUP.addClass("show-modal");
      savedPosition = $(window).scrollTop();
@@ -12,7 +11,6 @@ function createWorker() {
      $("#editSalary").val(`${salary}`);
      $("#editDate").val(`${date}`);
      $("#editEmail").val(`${email}`);
-     hideResultsIfshown();
      let $recallPopUP = $(".modal-edit");
      $recallPopUP.addClass("show-modal");
      savedPosition = $(window).scrollTop();

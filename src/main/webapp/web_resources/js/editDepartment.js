@@ -22,7 +22,6 @@ var savedPosition = 0;
 function editDepartment(id, name) {
     $("#hiddenDepId").val(`${id}`);
     $("#name").val(`${name}`);
-    hideResultsIfshown();
     let $recallPopUP = $(".modal-edit");
     $recallPopUP.addClass("show-modal");
     savedPosition = $(window).scrollTop();
