@@ -76,7 +76,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
-            dbManager.rollbackAndClose(connection);
+            dbManager.rollback(connection);
             LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeConnection(connection);
@@ -99,7 +99,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
-            dbManager.rollbackAndClose(connection);
+            dbManager.rollback(connection);
             LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeConnection(connection);

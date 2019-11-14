@@ -32,7 +32,7 @@ public class Validator {
     }
 
     public Validator(WorkerService workerService) {
-        this.errors = errors;
+        this.errors = new ArrayList<>();
         this.workerService = workerService;
     }
 

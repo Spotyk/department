@@ -98,7 +98,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
-            dbManager.rollbackAndClose(connection);
+            dbManager.rollback(connection);
             LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeConnection(connection);
@@ -117,7 +117,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
-            dbManager.rollbackAndClose(connection);
+            dbManager.rollback(connection);
             LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeConnection(connection);

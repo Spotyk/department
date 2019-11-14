@@ -30,12 +30,11 @@ public class DbManager {
         }
     }
 
-    public void rollbackAndClose(Connection con) {
+    public void rollback(Connection con) {
         LOGGER.error("Error occured. Rollback.");
         try {
             if (con != null) {
                 con.rollback();
-                con.close();
             }
         } catch (SQLException ex) {
             LOGGER.error("Cant rollback connection.", ex);
