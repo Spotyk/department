@@ -1,11 +1,11 @@
 package com.edu.ua.kh.hetman.constant;
 
 public class Constant {
-    public class Sql{
+    public class Sql {
         public static final String RESULTSET_NOT_CREATED = "Couldn`t create resultset";
     }
 
-    public class Entity{
+    public class Entity {
         public static final String ID = "id";
         public static final String WORKER_ID = "workerId";
         public static final String NAME = "name";
@@ -17,7 +17,8 @@ public class Constant {
         public static final String LIST = "list";
         public static final String OLD_WORKER_EMAIL = "hiddenWorkerOldEmail";
     }
-    public class Servlet{
+
+    public class Servlet {
         public static final String DEPARTMENT_LIST_PAGE = "/WEB-INF/department/department.jsp";
 
         public static final String WORKER_LIST_PAGE = "/WEB-INF/worker/worker.jsp";
@@ -33,18 +34,15 @@ public class Constant {
         public static final String WORKER_DELETE_SERVLET = "/deleteWorker";
     }
 
-    public class ServerStatus{
+    public class ServerStatus {
         public static final int NOT_FOUND = 404;
         public static final int OK = 200;
 
     }
-    public class Servis{
+
+    public class Servis {
         public static final String WORKER_SERVICE = "workerService";
         public static final String DEPARTMENT_SERVICE = "depService";
 
     }
-
-
-
-
 }
