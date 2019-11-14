@@ -42,6 +42,5 @@ public class WorkersUpdateServlet extends HttpServlet {
         errors.forEach(string -> responseWriter.responseWrite(string, httpServletResponse));
 
         httpServletResponse.setStatus(NOT_FOUND);
-
     }
 }

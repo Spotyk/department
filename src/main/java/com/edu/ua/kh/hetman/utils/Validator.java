@@ -4,17 +4,16 @@ import com.edu.ua.kh.hetman.db.dto.WorkerDTO;
 import com.edu.ua.kh.hetman.service.DepartmentService;
 import com.edu.ua.kh.hetman.service.WorkerService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
     private static final String NUMBER_PATTERN = "^[0-9]+";
-    private static final String EMAIL_PATTERN = "[A-z0-9]+@.+\\.[A-z0-9]+";
+    private static final String EMAIL_PATTERN = "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
     private static final String DATE_PATTERN = "\\d{4}-\\d{2}-\\d{2}";
 
-    private List<String> errors = new ArrayList<>();
+    private List<String> errors;
     private DepartmentService departmentService;
     private WorkerService workerService;
 
@@ -61,7 +60,7 @@ public class Validator {
     public boolean isNumber(String number) {
         Pattern pattern = Pattern.compile(NUMBER_PATTERN);
         Matcher matcher = pattern.matcher(number);
-        return matcher.matches() && number.length() < 30;
+        return matcher.matches() && number.length() < 10;
     }
 
     public boolean isEmail(String email) {

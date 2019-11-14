@@ -38,6 +38,4 @@ public class DepartmentCreateServlet extends HttpServlet {
 
         httpServletResponse.setStatus(NOT_FOUND);
     }
-
-
 }

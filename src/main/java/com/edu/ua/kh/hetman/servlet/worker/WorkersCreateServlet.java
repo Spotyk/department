@@ -29,7 +29,6 @@ public class WorkersCreateServlet extends HttpServlet {
         Validator validator = new Validator(new ArrayList<>(), workerService);
         ResponseWriter responseWriter = new ResponseWriter();
 
-
         WorkerDTO workerDTO = WorkerDTOCreator.createWorkerDTOFromRequest(httpServletRequest);
         if (validator.isWorkerValid(workerDTO) && !workerService.isWorkerEmailExist(workerDTO.getEmail())) {
             Worker worker = WorkerDTOConverter.convertCooperatorDTOToCooperator(workerDTO);

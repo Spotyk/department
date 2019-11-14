@@ -26,7 +26,7 @@ public class WorkersListServlet extends HttpServlet {
         Validator validator = new Validator(new ArrayList<>(), depService);
         String departmentID = request.getParameter("depId");
         if (departmentID == null) {
-            response.setStatus(400);
+            response.sendRedirect("/departments");
             return;
         }
 
@@ -38,8 +38,6 @@ public class WorkersListServlet extends HttpServlet {
             response.setStatus(200);
             return;
         }
-        response.setStatus(400);
-        return;
-
+        response.sendRedirect("/departments");
     }
 }
