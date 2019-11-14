@@ -19,18 +19,6 @@ public class DbManager {
         return dataSource.getConnection();
     }
 
-    public void closeAndCommit(Connection con) {
-        try {
-            LOGGER.info("Closing connection and committing.");
-            if (con != null && !con.isClosed()) {
-                con.commit();
-                con.close();
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Cant close connection and commit it.", e);
-        }
-    }
-
     public void closeConnection(Connection con) {
         try {
             LOGGER.info("Closing connection.");
@@ -50,7 +38,7 @@ public class DbManager {
                 con.close();
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            LOGGER.error("Cant rollback connection.", ex);
         }
     }
 }

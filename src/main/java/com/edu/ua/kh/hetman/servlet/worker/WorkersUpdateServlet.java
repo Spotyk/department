@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.util.List;
 
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.OK;
@@ -25,7 +25,7 @@ public class WorkersUpdateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         WorkerService workerService = (WorkerService) httpServletRequest.getServletContext().getAttribute(WORKER_SERVICE);
-        Validator validator = new Validator(new ArrayList<>(), workerService);
+        Validator validator = new Validator(workerService);
         ResponseWriter responseWriter = new ResponseWriter();
 
         WorkerDTO workerDTO = WorkerDTOCreator.createWorkerDTOFromRequest(httpServletRequest);
@@ -36,7 +36,7 @@ public class WorkersUpdateServlet extends HttpServlet {
             httpServletResponse.setStatus(OK);
             return;
         }
-        ArrayList<String> errors = (ArrayList<String>) validator.validatingWorker(workerDTO);
+        List<String> errors = validator.validatingWorker(workerDTO);
 
         errors.forEach(string -> responseWriter.responseWrite(string, httpServletResponse));
 

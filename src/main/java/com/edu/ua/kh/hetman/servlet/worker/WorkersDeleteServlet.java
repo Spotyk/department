@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.ID;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
@@ -20,7 +19,7 @@ public class WorkersDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         WorkerService workerService = (WorkerService) httpServletRequest.getServletContext().getAttribute(WORKER_SERVICE);
-        Validator validator = new Validator(new ArrayList<>(), workerService);
+        Validator validator = new Validator(workerService);
         String workId = httpServletRequest.getParameter(ID);
         if (workId == null || !validator.isNumber(workId)) {
             httpServletResponse.setStatus(NOT_FOUND);

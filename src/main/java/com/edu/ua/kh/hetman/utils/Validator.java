@@ -4,6 +4,7 @@ import com.edu.ua.kh.hetman.db.dto.WorkerDTO;
 import com.edu.ua.kh.hetman.service.DepartmentService;
 import com.edu.ua.kh.hetman.service.WorkerService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,12 +26,12 @@ public class Validator {
     private DepartmentService departmentService;
     private WorkerService workerService;
 
-    public Validator(List<String> errors, DepartmentService departmentService) {
-        this.errors = errors;
+    public Validator(DepartmentService departmentService) {
+        this.errors = new ArrayList<>();
         this.departmentService = departmentService;
     }
 
-    public Validator(List<String> errors, WorkerService workerService) {
+    public Validator(WorkerService workerService) {
         this.errors = errors;
         this.workerService = workerService;
     }

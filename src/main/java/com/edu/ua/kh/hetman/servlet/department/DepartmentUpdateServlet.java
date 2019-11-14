@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.util.List;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.NAME;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
@@ -22,7 +22,7 @@ public class DepartmentUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         DepartmentService departmentService = (DepartmentService) httpServletRequest.getServletContext().getAttribute(DEPARTMENT_SERVICE);
         ResponseWriter responseWriter = new ResponseWriter();
-        Validator validator = new Validator(new ArrayList<>(), departmentService);
+        Validator validator = new Validator(departmentService);
 
         String depName = httpServletRequest.getParameter(NAME);
         String depId = httpServletRequest.getParameter("hiddenDepId");
@@ -41,7 +41,7 @@ public class DepartmentUpdateServlet extends HttpServlet {
             httpServletResponse.setStatus(OK);
             return;
         }
-        ArrayList<String> errors = (ArrayList<String>) validator.validatingDepartment(depName);
+        List<String> errors = validator.validatingDepartment(depName);
 
         errors.forEach(string -> responseWriter.responseWrite(string, httpServletResponse));
         httpServletResponse.setStatus(NOT_FOUND);

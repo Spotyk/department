@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.ID;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
@@ -21,7 +20,7 @@ public class DepartmentDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         DepartmentService departmentService = (DepartmentService) httpServletRequest.getServletContext().getAttribute(DEPARTMENT_SERVICE);
-        Validator validator = new Validator(new ArrayList<>(), departmentService);
+        Validator validator = new Validator(departmentService);
 
         String depId = httpServletRequest.getParameter(ID);
         if (depId == null || !validator.isNumber(depId)) {

@@ -96,11 +96,12 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement = connection.prepareStatement("INSERT INTO departments(id,name) VALUES (DEFAULT,?)");
             preparedStatement.setString(1, name);
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             dbManager.rollbackAndClose(connection);
             LOGGER.error("SQL exception", e);
         } finally {
-            dbManager.closeAndCommit(connection);
+            dbManager.closeConnection(connection);
         }
     }
 
@@ -114,11 +115,12 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement.setString(1, newName);
             preparedStatement.setInt(2, depId);
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             dbManager.rollbackAndClose(connection);
             LOGGER.error("SQL exception", e);
         } finally {
-            dbManager.closeAndCommit(connection);
+            dbManager.closeConnection(connection);
         }
     }
 
@@ -131,10 +133,11 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement = connection.prepareStatement("DELETE FROM departments where id=?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             LOGGER.error("SQL exception", e);
         } finally {
-            dbManager.closeAndCommit(connection);
+            dbManager.closeConnection(connection);
         }
     }
 }

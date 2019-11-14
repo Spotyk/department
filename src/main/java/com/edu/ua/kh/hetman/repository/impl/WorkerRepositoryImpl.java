@@ -52,10 +52,11 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement = connection.prepareStatement("DELETE FROM workers where id=?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             LOGGER.error("Sql exception", e);
         } finally {
-            dbManager.closeAndCommit(connection);
+            dbManager.closeConnection(connection);
         }
     }
 
@@ -73,11 +74,12 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.setDate(4, new java.sql.Date(worker.getDate().getTime()));
             preparedStatement.setString(5, worker.getEmail());
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             dbManager.rollbackAndClose(connection);
             LOGGER.error("Sql exception", e);
         } finally {
-            dbManager.closeAndCommit(connection);
+            dbManager.closeConnection(connection);
         }
     }
 
@@ -95,11 +97,12 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.setString(5, worker.getEmail());
             preparedStatement.setInt(6, worker.getId());
             preparedStatement.executeUpdate();
+            connection.commit();
         } catch (SQLException e) {
             dbManager.rollbackAndClose(connection);
             LOGGER.error("Sql exception", e);
         } finally {
-            dbManager.closeAndCommit(connection);
+            dbManager.closeConnection(connection);
         }
     }
 
