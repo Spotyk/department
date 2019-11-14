@@ -31,7 +31,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
         Connection connection;
         try {
             connection = dbManager.getConnection();
-            statement = connection.prepareStatement("SELECT * FROM `workers` WHERE `departmentId`=?");
+            statement = connection.prepareStatement("SELECT * FROM workers WHERE departmentId=?");
             statement.setInt(1, id);
             rs = statement.executeQuery();
             while (rs.next()) {
@@ -68,11 +68,12 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             connection = dbManager.getConnection();
             preparedStatement = connection.prepareStatement("INSERT into workers(name,departmentId,salary,date,email,id)" +
                     " VALUES (?,?,?,?,?,DEFAULT)");
-            preparedStatement.setString(1, worker.getName());
-            preparedStatement.setInt(2, worker.getDepartmentId());
-            preparedStatement.setInt(3, worker.getSalary());
-            preparedStatement.setDate(4, new java.sql.Date(worker.getDate().getTime()));
-            preparedStatement.setString(5, worker.getEmail());
+            int i = 1;
+            preparedStatement.setString(i++, worker.getName());
+            preparedStatement.setInt(i++, worker.getDepartmentId());
+            preparedStatement.setInt(i++, worker.getSalary());
+            preparedStatement.setDate(i++, new java.sql.Date(worker.getDate().getTime()));
+            preparedStatement.setString(i++, worker.getEmail());
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
@@ -90,12 +91,13 @@ public class WorkerRepositoryImpl implements WorkerRepository {
         try {
             connection = dbManager.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE workers SET name=?,departmentId=?,salary=?,date=?,email=? WHERE id=?");
-            preparedStatement.setString(1, worker.getName());
-            preparedStatement.setInt(2, worker.getDepartmentId());
-            preparedStatement.setInt(3, worker.getSalary());
-            preparedStatement.setDate(4, new java.sql.Date(worker.getDate().getTime()));
-            preparedStatement.setString(5, worker.getEmail());
-            preparedStatement.setInt(6, worker.getId());
+            int i = 1;
+            preparedStatement.setString(i++, worker.getName());
+            preparedStatement.setInt(i++, worker.getDepartmentId());
+            preparedStatement.setInt(i++, worker.getSalary());
+            preparedStatement.setDate(i++, new java.sql.Date(worker.getDate().getTime()));
+            preparedStatement.setString(i++, worker.getEmail());
+            preparedStatement.setInt(i++, worker.getId());
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {

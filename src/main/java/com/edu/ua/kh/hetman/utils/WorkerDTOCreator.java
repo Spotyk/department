@@ -1,6 +1,7 @@
 package com.edu.ua.kh.hetman.utils;
 
 import com.edu.ua.kh.hetman.db.dto.WorkerDTO;
+import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,11 +19,11 @@ public class WorkerDTOCreator {
         WorkerDTO workerDTO = new WorkerDTO();
 
         workerDTO.setId(request.getParameter(WORKER_ID) == null ? String.valueOf(0) : request.getParameter(WORKER_ID));
-        workerDTO.setDepartmentId(request.getParameter(DEP_ID));
-        workerDTO.setName(request.getParameter(NAME));
-        workerDTO.setEmail(request.getParameter(EMAIL));
-        workerDTO.setDate(request.getParameter(WORK_DATE));
-        workerDTO.setSalary(request.getParameter(SALARY));
+        workerDTO.setDepartmentId(StringUtils.isBlank(request.getParameter(DEP_ID)) ? " " : request.getParameter(DEP_ID));
+        workerDTO.setName(StringUtils.isBlank(request.getParameter(NAME)) ? " " : request.getParameter(NAME));
+        workerDTO.setEmail(StringUtils.isBlank(request.getParameter(EMAIL)) ? " " : request.getParameter(EMAIL));
+        workerDTO.setDate(StringUtils.isBlank(request.getParameter(WORK_DATE)) ? " " : request.getParameter(WORK_DATE));
+        workerDTO.setSalary(StringUtils.isBlank(request.getParameter(SALARY)) ? " " : request.getParameter(SALARY));
         workerDTO.setOldEmail(request.getParameter(OLD_WORKER_EMAIL) == null ?
                 String.valueOf(0) : request.getParameter(OLD_WORKER_EMAIL));
         return workerDTO;

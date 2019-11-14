@@ -111,9 +111,10 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         Connection connection = null;
         try {
             connection = dbManager.getConnection();
-            preparedStatement = connection.prepareStatement("UPDATE departments SET name=? WHERE id=?;");
-            preparedStatement.setString(1, newName);
-            preparedStatement.setInt(2, depId);
+            preparedStatement = connection.prepareStatement("UPDATE departments SET name=? WHERE id=?");
+            int i = 1;
+            preparedStatement.setString(i++, newName);
+            preparedStatement.setInt(i++, depId);
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
