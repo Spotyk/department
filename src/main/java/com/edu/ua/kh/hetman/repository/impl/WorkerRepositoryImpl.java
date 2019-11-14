@@ -4,6 +4,7 @@ import com.edu.ua.kh.hetman.db.DbManager;
 import com.edu.ua.kh.hetman.entity.Worker;
 import com.edu.ua.kh.hetman.entity.impl.WorkerEntityExtractorImpl;
 import com.edu.ua.kh.hetman.repository.WorkerRepository;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkerRepositoryImpl implements WorkerRepository {
+    private static final Logger LOGGER = Logger.getLogger(WorkerRepository.class);
+
     private DbManager dbManager;
 
     public WorkerRepositoryImpl(DbManager dbManager) {
@@ -35,7 +38,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
                 workers.add(mapper.extractEntity(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("Sql exception", e);
         }
         return workers;
     }
@@ -50,7 +53,7 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeAndCommit(connection);
         }
@@ -71,7 +74,8 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.setString(5, worker.getEmail());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            dbManager.rollbackAndClose(connection);
+            LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeAndCommit(connection);
         }
@@ -92,7 +96,8 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             preparedStatement.setInt(6, worker.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            dbManager.rollbackAndClose(connection);
+            LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeAndCommit(connection);
         }
@@ -111,8 +116,8 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             if (rs.next()) {
                 return true;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeConnection(connection);
         }
@@ -132,8 +137,8 @@ public class WorkerRepositoryImpl implements WorkerRepository {
             if (rs.next()) {
                 return true;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            LOGGER.error("Sql exception", e);
         } finally {
             dbManager.closeConnection(connection);
         }

@@ -11,6 +11,7 @@
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
     z-index: 99999;
 }
+
 .modal-create {
     position: fixed;
     left: 0;
@@ -34,10 +35,10 @@
 }
 
 .fixed-body-position {
-    width:100%;
+    width: 100%;
     position: absolute;
     overflow: hidden;
- }
+}
 
 .recall-input {
     background-color: aquamarine;

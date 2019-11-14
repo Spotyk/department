@@ -7,15 +7,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DbManager {
+    private static final Logger LOGGER = Logger.getLogger(DbManager.class);
 
     private DataSource dataSource;
 
     public DbManager(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
-    private static final Logger LOGGER = Logger.getLogger(DbManager.class);
-
 
     public Connection getConnection() throws SQLException {
         return dataSource.getConnection();
@@ -29,16 +27,18 @@ public class DbManager {
                 con.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("Cant close connection and commit it.", e);
         }
-    }    public void closeConnection(Connection con) {
+    }
+
+    public void closeConnection(Connection con) {
         try {
             LOGGER.info("Closing connection.");
             if (con != null && !con.isClosed()) {
                 con.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("Cant close connection.", e);
         }
     }
 

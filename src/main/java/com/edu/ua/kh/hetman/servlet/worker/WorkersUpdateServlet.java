@@ -8,12 +8,10 @@ import com.edu.ua.kh.hetman.utils.Validator;
 import com.edu.ua.kh.hetman.utils.WorkerDTOConverter;
 import com.edu.ua.kh.hetman.utils.WorkerDTOCreator;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
@@ -23,8 +21,9 @@ import static com.edu.ua.kh.hetman.constant.Constant.Servlet.WORKER_UPDATE_SERVL
 
 @WebServlet(WORKER_UPDATE_SERVLET)
 public class WorkersUpdateServlet extends HttpServlet {
+
     @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         WorkerService workerService = (WorkerService) httpServletRequest.getServletContext().getAttribute(WORKER_SERVICE);
         Validator validator = new Validator(new ArrayList<>(), workerService);
         ResponseWriter responseWriter = new ResponseWriter();

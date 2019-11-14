@@ -13,6 +13,14 @@ public class Validator {
     private static final String EMAIL_PATTERN = "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
     private static final String DATE_PATTERN = "\\d{4}-\\d{2}-\\d{2}";
 
+    private static final String DUPLICATE_NAME = ".duplicateName";
+    private static final String DUPLICATE_EMAIL = ".duplicateEmail";
+    private static final String NOT_VALID_NAME = ".notValidName";
+    private static final String NOT_VALID_EMAIL = ".notValidEmail";
+    private static final String NOT_VALID_DATE = ".notValidDate";
+    private static final String NOT_VALID_NUMBER = ".notValidNumber";
+
+
     private List<String> errors;
     private DepartmentService departmentService;
     private WorkerService workerService;
@@ -29,10 +37,10 @@ public class Validator {
 
     public List<String> validatingDepartment(String name) {
         if (departmentService.isDepartmentNameExist(name)) {
-            errors.add(".duplicateName");
+            errors.add(DUPLICATE_NAME);
         }
         if (!isValidString(name)) {
-            errors.add(".notValidName");
+            errors.add(NOT_VALID_NAME);
         }
         return errors;
     }
@@ -40,19 +48,19 @@ public class Validator {
     public List<String> validatingWorker(WorkerDTO workerDTO) {
         if (!workerDTO.getOldEmail().equals(workerDTO.getEmail())
                 && workerService.isWorkerEmailExist(workerDTO.getEmail())) {
-            errors.add(".duplicateEmail");
+            errors.add(DUPLICATE_EMAIL);
         }
         if (!isValidString(workerDTO.getName())) {
-            errors.add(".notValidName");
+            errors.add(NOT_VALID_NAME);
         }
         if (!isEmail(workerDTO.getEmail())) {
-            errors.add(".notValidEmail");
+            errors.add(NOT_VALID_EMAIL);
         }
         if (!isDate(workerDTO.getDate())) {
-            errors.add(".notValidDate");
+            errors.add(NOT_VALID_DATE);
         }
         if (!isNumber(workerDTO.getSalary())) {
-            errors.add(".notValidNumber");
+            errors.add(NOT_VALID_NUMBER);
         }
         return errors;
     }

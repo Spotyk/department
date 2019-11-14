@@ -28,7 +28,6 @@ function sendCreateRequest() {
         type: 'post',
         data: { name: name }
     }).statusCode({
-
         200: function() {
             window.location.replace(`http://${host}:${port}/departments`);
             closeCreateDepartment();
@@ -36,7 +35,6 @@ function sendCreateRequest() {
         404: function(response) {
             printArrayFromString(response.responseText);
         }
-
     });
 }
 
@@ -97,9 +95,6 @@ function sendUpdateWorkerRequest() {
 function sendRequest() {
     var name = $(INPUT_NAME).val();
     var hiddenDepId = $(INPUT_DEP_ID).val();
-
-    var host = window.location.hostname;
-    var port = window.location.port;
 
     $.ajax({
         url: '/updateDepartment',

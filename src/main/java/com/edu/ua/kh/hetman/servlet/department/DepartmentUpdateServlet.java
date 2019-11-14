@@ -4,12 +4,10 @@ import com.edu.ua.kh.hetman.service.DepartmentService;
 import com.edu.ua.kh.hetman.utils.ResponseWriter;
 import com.edu.ua.kh.hetman.utils.Validator;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.NAME;
@@ -21,7 +19,7 @@ import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_UPDATE_S
 @WebServlet(DEPARTMENT_UPDATE_SERVLET)
 public class DepartmentUpdateServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         DepartmentService departmentService = (DepartmentService) httpServletRequest.getServletContext().getAttribute(DEPARTMENT_SERVICE);
         ResponseWriter responseWriter = new ResponseWriter();
         Validator validator = new Validator(new ArrayList<>(), departmentService);

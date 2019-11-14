@@ -43,6 +43,7 @@ function closeEditDepartment() {
     unFixBodyPosition();
     $(window).scrollTop(savedPosition);
 }
+
 function closeCreateDepartment() {
     let $recallPopUP = $(".modal-create");
     $recallPopUP.removeClass("show-modal");

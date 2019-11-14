@@ -16,6 +16,7 @@ import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_LIST_SER
 
 @WebServlet(DEPARTMENT_LIST_SERVLET)
 public class DepartmentListServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         DepartmentService departmentService = (DepartmentService) httpServletRequest.getServletContext().getAttribute(DEPARTMENT_SERVICE);

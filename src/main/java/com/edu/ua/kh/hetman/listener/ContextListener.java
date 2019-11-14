@@ -45,7 +45,6 @@ public class ContextListener implements ServletContextListener {
         }
     }
 
-
     private DepartmentService initDepartmentService(DbManager dbManager) {
         return new DepartmentServiceImpl(new DepartmentRepositoryImpl(dbManager));
     }

@@ -1,6 +1,5 @@
 package com.edu.ua.kh.hetman.utils;
 
-import com.edu.ua.kh.hetman.db.DbManager;
 import com.edu.ua.kh.hetman.db.dto.WorkerDTO;
 import com.edu.ua.kh.hetman.entity.Worker;
 import org.apache.log4j.Logger;
@@ -10,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class WorkerDTOConverter {
-    private static final Logger LOGGER = Logger.getLogger(DbManager.class);
+    private static final Logger LOGGER = Logger.getLogger(WorkerDTOConverter.class);
 
     public static Worker convertCooperatorDTOToCooperator(WorkerDTO workerDTO) {
         Worker worker = new Worker();
@@ -18,7 +17,6 @@ public class WorkerDTOConverter {
         worker.setName(workerDTO.getName());
         worker.setEmail(workerDTO.getEmail());
         worker.setDepartmentId(Integer.parseInt(workerDTO.getDepartmentId()));
-        //todo valid int
         worker.setSalary(Integer.parseInt(workerDTO.getSalary()));
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -27,7 +25,6 @@ public class WorkerDTOConverter {
         } catch (ParseException ex) {
             LOGGER.error("Cant convert date!", ex);
         }
-
         return worker;
     }
 }

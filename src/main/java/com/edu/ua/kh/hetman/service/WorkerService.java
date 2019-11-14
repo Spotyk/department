@@ -5,6 +5,7 @@ import com.edu.ua.kh.hetman.entity.Worker;
 import java.util.List;
 
 public interface WorkerService {
+
     List<Worker> getAllWorkersByDepartmentId(int id);
 
     void deleteWorkerById(int id);

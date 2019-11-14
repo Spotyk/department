@@ -7,12 +7,15 @@ public class Constant {
 
     public class Entity{
         public static final String ID = "id";
+        public static final String WORKER_ID = "workerId";
         public static final String NAME = "name";
         public static final String SALARY = "salary";
         public static final String WORK_DATE = "date";
         public static final String EMAIL = "email";
         public static final String DEPARTMENT_ID = "departmentId";
+        public static final String DEP_ID = "depId";
         public static final String LIST = "list";
+        public static final String OLD_WORKER_EMAIL = "hiddenWorkerOldEmail";
     }
     public class Servlet{
         public static final String DEPARTMENT_LIST_PAGE = "/WEB-INF/department/department.jsp";

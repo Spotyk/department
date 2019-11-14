@@ -5,6 +5,7 @@ import com.edu.ua.kh.hetman.entity.Department;
 import java.util.List;
 
 public interface DepartmentService {
+
     List<Department> getAllDepartments();
 
     boolean isDepartmentNameExist(String name);

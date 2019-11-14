@@ -3,12 +3,10 @@ package com.edu.ua.kh.hetman.servlet.department;
 import com.edu.ua.kh.hetman.service.DepartmentService;
 import com.edu.ua.kh.hetman.utils.Validator;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.ID;
@@ -19,8 +17,9 @@ import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_DELETE_S
 
 @WebServlet(DEPARTMENT_DELETE_SERVLET)
 public class DepartmentDeleteServlet extends HttpServlet {
+
     @Override
-    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         DepartmentService departmentService = (DepartmentService) httpServletRequest.getServletContext().getAttribute(DEPARTMENT_SERVICE);
         Validator validator = new Validator(new ArrayList<>(), departmentService);
 

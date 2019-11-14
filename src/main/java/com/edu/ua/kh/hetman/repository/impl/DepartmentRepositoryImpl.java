@@ -4,6 +4,7 @@ import com.edu.ua.kh.hetman.db.DbManager;
 import com.edu.ua.kh.hetman.entity.Department;
 import com.edu.ua.kh.hetman.entity.impl.DepartmentEntityExtractorImpl;
 import com.edu.ua.kh.hetman.repository.DepartmentRepository;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentRepositoryImpl implements DepartmentRepository {
-    private DbManager dbManager;
+    private static final Logger LOGGER = Logger.getLogger(DepartmentRepository.class);
 
+    private DbManager dbManager;
 
     public DepartmentRepositoryImpl(DbManager dbManager) {
         this.dbManager = dbManager;
@@ -36,7 +38,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
                 departments.add(mapper.extractEntity(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeConnection(connection);
             return departments;
@@ -56,8 +58,8 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             if (rs.next()) {
                 return true;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeConnection(connection);
         }
@@ -77,8 +79,8 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             if (rs.next()) {
                 return true;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeConnection(connection);
         }
@@ -95,7 +97,8 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement.setString(1, name);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            dbManager.rollbackAndClose(connection);
+            LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeAndCommit(connection);
         }
@@ -112,7 +115,8 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement.setInt(2, depId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            dbManager.rollbackAndClose(connection);
+            LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeAndCommit(connection);
         }
@@ -128,7 +132,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error("SQL exception", e);
         } finally {
             dbManager.closeAndCommit(connection);
         }
