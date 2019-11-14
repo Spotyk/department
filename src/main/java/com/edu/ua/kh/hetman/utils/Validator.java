@@ -61,13 +61,13 @@ public class Validator {
     public boolean isNumber(String number) {
         Pattern pattern = Pattern.compile(NUMBER_PATTERN);
         Matcher matcher = pattern.matcher(number);
-        return matcher.matches();
+        return matcher.matches() && number.length() < 30;
     }
 
     public boolean isEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+        return matcher.matches() && email.length() < 50;
     }
 
     public boolean isValidString(String string) {

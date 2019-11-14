@@ -1,6 +1,7 @@
 package com.edu.ua.kh.hetman.servlet.worker;
 
 import com.edu.ua.kh.hetman.service.WorkerService;
+import com.edu.ua.kh.hetman.utils.Validator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.ID;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
@@ -20,10 +22,16 @@ public class WorkersDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         WorkerService workerService = (WorkerService) httpServletRequest.getServletContext().getAttribute(WORKER_SERVICE);
+        Validator validator = new Validator(new ArrayList<>(),workerService);
         String workId = httpServletRequest.getParameter(ID);
+        if (workId == null || !validator.isNumber(workId)) {
+            httpServletResponse.setStatus(NOT_FOUND);
+            return;
+        }
         int workerId = Integer.parseInt(workId);
 
         if (workerService.isWorkerIdExist(workerId)) {
+
             workerService.deleteWorkerById(workerId);
             httpServletResponse.setStatus(OK);
             return;

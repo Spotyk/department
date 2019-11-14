@@ -18,6 +18,7 @@ public class WorkerDTOConverter {
         worker.setName(workerDTO.getName());
         worker.setEmail(workerDTO.getEmail());
         worker.setDepartmentId(Integer.parseInt(workerDTO.getDepartmentId()));
+        //todo valid int
         worker.setSalary(Integer.parseInt(workerDTO.getSalary()));
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

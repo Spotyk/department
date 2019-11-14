@@ -29,7 +29,7 @@ public class DepartmentUpdateServlet extends HttpServlet {
         String depName = httpServletRequest.getParameter(NAME);
         String depId = httpServletRequest.getParameter("hiddenDepId");
 
-        if (!validator.isNumber(depId)) {
+        if (depId == null || !validator.isNumber(depId)) {
             return;
         }
 
