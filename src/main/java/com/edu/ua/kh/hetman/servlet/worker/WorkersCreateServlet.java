@@ -16,7 +16,7 @@ import java.util.List;
 
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.OK;
-import static com.edu.ua.kh.hetman.constant.Constant.Servis.WORKER_SERVICE;
+import static com.edu.ua.kh.hetman.constant.Constant.Service.WORKER_SERVICE;
 import static com.edu.ua.kh.hetman.constant.Constant.Servlet.WORKER_CREATE_SERVLET;
 
 @WebServlet(WORKER_CREATE_SERVLET)

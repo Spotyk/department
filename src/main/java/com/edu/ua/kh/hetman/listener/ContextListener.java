@@ -17,8 +17,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
-import static com.edu.ua.kh.hetman.constant.Constant.Servis.DEPARTMENT_SERVICE;
-import static com.edu.ua.kh.hetman.constant.Constant.Servis.WORKER_SERVICE;
+import static com.edu.ua.kh.hetman.constant.Constant.Service.DEPARTMENT_SERVICE;
+import static com.edu.ua.kh.hetman.constant.Constant.Service.WORKER_SERVICE;
 
 public class ContextListener implements ServletContextListener {
 

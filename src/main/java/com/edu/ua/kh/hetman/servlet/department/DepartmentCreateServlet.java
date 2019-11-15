@@ -13,7 +13,7 @@ import java.util.List;
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.NAME;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.OK;
-import static com.edu.ua.kh.hetman.constant.Constant.Servis.DEPARTMENT_SERVICE;
+import static com.edu.ua.kh.hetman.constant.Constant.Service.DEPARTMENT_SERVICE;
 import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_CREATE_SERVLET;
 
 @WebServlet(DEPARTMENT_CREATE_SERVLET)

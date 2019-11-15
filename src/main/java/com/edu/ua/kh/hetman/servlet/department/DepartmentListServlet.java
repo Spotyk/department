@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.LIST;
-import static com.edu.ua.kh.hetman.constant.Constant.Servis.DEPARTMENT_SERVICE;
+import static com.edu.ua.kh.hetman.constant.Constant.Service.DEPARTMENT_SERVICE;
 import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_LIST_PAGE;
 import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_LIST_SERVLET;
 

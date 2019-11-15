@@ -40,7 +40,7 @@ public class Constant {
 
     }
 
-    public class Servis {
+    public class Service {
         public static final String WORKER_SERVICE = "workerService";
         public static final String DEPARTMENT_SERVICE = "depService";
 

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import static com.edu.ua.kh.hetman.constant.Constant.Entity.ID;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.NOT_FOUND;
 import static com.edu.ua.kh.hetman.constant.Constant.ServerStatus.OK;
-import static com.edu.ua.kh.hetman.constant.Constant.Servis.DEPARTMENT_SERVICE;
+import static com.edu.ua.kh.hetman.constant.Constant.Service.DEPARTMENT_SERVICE;
 import static com.edu.ua.kh.hetman.constant.Constant.Servlet.DEPARTMENT_DELETE_SERVLET;
 
 @WebServlet(DEPARTMENT_DELETE_SERVLET)
