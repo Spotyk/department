@@ -16,6 +16,7 @@ public class Constant {
         public static final String DEP_ID = "depId";
         public static final String LIST = "list";
         public static final String OLD_WORKER_EMAIL = "hiddenWorkerOldEmail";
+        public static final String SPACE = " ";
     }
 
     public class Servlet {

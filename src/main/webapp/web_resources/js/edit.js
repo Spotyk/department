@@ -20,6 +20,7 @@ $(document).keyup(function(event) {
 var savedPosition = 0;
 
 function editDepartment(id, name) {
+    hideIfShown();
     $("#hiddenDepId").val(`${id}`);
     $("#name").val(`${name}`);
     let $recallPopUP = $(".modal-edit");

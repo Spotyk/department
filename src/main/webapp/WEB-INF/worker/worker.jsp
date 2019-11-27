@@ -131,10 +131,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/web_resources/js/editDepartment.js"></script>
+    <script src="${pageContext.request.contextPath}/web_resources/js/edit.js"></script>
     <script src="${pageContext.request.contextPath}/web_resources/js/request.js"></script>
     <script src="${pageContext.request.contextPath}/web_resources/js/delete.js"></script>
-    <script src="${pageContext.request.contextPath}/web_resources/js/popap.js"></script>
+    <script src="${pageContext.request.contextPath}/web_resources/js/popup.js"></script>
 
 </body>
 
